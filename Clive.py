@@ -22,10 +22,25 @@ def get():
 
 @app.route('/api/pos/indicator')
 def getIndicator():
+    smonth = request.args.get('SMONTH')
+    sday = request.args.get('SDAY')
+    syear = request.args.get('SYEAR')
+    emonth = request.args.get('EMONTH')
+    eday = request.args.get('EDAY')
+    eyear = request.args.get('EYEAR')
     indicator = request.args.get('RETURN_INDICATOR')
     starttime = request.args.get('TRANS_TIME_START')
     stoptime = request.args.get('TRANS_TIME_STOP')
-    print(indicator, starttime, stoptime)
+    print(
+        smonth,
+        sday,
+        syear,
+        emonth,
+        eday,
+        eyear,
+        starttime,
+        stoptime,
+        indicator)
     database = pd.read_csv('FTP.csv')
     return database.to_json(orient='records')
 
